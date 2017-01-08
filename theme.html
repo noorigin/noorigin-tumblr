@@ -253,6 +253,12 @@ p {
     bottom: auto;
 }
 
+.photoset-container {
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
 @media (max-width: 40rem) {
     .post-grid .post {
         width: 100%;
@@ -381,12 +387,12 @@ p {
     
     <!--PHOTOSET POST-->
     {block:Photoset}
-        <div class="post photoset">
+        <div class="photoset-container">
             {block:Caption}
                 <a href="http://noorigin.tumblr.com/gallery" class="posttitle">{Caption}</a>
             {/block:Caption}
             <div>
-                {Photoset-500}
+                {Photoset}
             </div>
         </div>
     {/block:Photoset}
