@@ -170,12 +170,48 @@ p {
 }
 
 .post-footer {
-    height: 3%;
     display: flex;
 }
 
-.post-footer-button {
-    padding: 0.2em;
+.post-footer-button:not(:last-child) {
+    position: relative;
+    margin-right: 0.6em;
+}
+
+.post-footer-button i {
+    font-size: 18px;
+    /*color: #ccc;*/
+    color: orange;
+}
+
+/*
+    via http://stackoverflow.com/questions/21708662/customise-tumblrs-new-like-button-iframe-likebutton
+*/
+.post-footer-button-like .like_button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+}
+
+/* Force iframe to fill button */
+.post-footer-button-like .like_button iframe {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.post-footer-button-like i {
+    position: relative;
+    z-index: 1;
+}
+
+.post-footer-button-like .like_button.liked + i {
+    color: red;
 }
 
 .post-content .read_more_container {
@@ -338,24 +374,27 @@ p {
             </div>
             <div class="post-footer">
                 <!-- social etc -->
-                <div class="post-footer-button">{ReblogButton}</div>
-                <div class="post-footer-button">{LikeButton}</div>
-            <!--SOCIAL MEDIA LINK SECTION DISPLAYED ONLY ON PERMALINK PAGE-->
-            <!--SHARETHIS generated social media code, not sure if we should use them-->
-                <!--   
-                <span st_url='{Permalink}' st_title='{Title}' class='st_facebook' displayText='Facebook'></span><span st_url='{Permalink}' st_title='{Title}' class='st_twitter' displayText='Tweet'></span><span st_url='{Permalink}' st_title='{Title}' class='st_pinterest' displayText='Pinterest'></span><span st_url='{Permalink}' st_title='{Title}' class='st_reddit' displayText='Reddit'></span>
-                -->
+                <div class="post-footer-button">
+                    <a target="_new" href="{ReblogURL}">
+                        <i class="fa fa-retweet"></i>
+                    </a>
+                </div>
+                <div class="post-footer-button post-footer-button-like">
+                    {LikeButton size="18"}
+                    <i class="fa fa-heart"></i>
+                </div>
             <!--HTML SOCIAL MEDIA BUTTONS BELOW-->
+            <!--SOCIAL MEDIA LINK SECTION DISPLAYED ONLY ON PERMALINK PAGE-->
             <!--TWITTER BUTTON-->
                 <div class="post-footer-button">
                     <a target="_new" href="https://twitter.com/intent/tweet?text=No Origin - {URLEncodedTweetSummary}">
-                        <img style="border: 0pt none;" src="http://www.tnlvl.com/images/icons/twitter-gray.png" width="20" height="20" />
+                        <i class="fa fa-twitter"></i>
                     </a>
                 </div>
             <!--FACEBOOK BUTTON-->
                 <div class="post-footer-button">
                     <a target="_new" href="https://www.facebook.com/sharer.php?u={Permalink}{block:Title}&t={Title}{/block:Title}">
-                        <img style="border: 0pt none;" src="http://usa.flos.com/assets/img/footer/facebook.png" width="19" height="19" />
+                        <i class="fa fa-facebook"></i>
                     </a>
                 </div>
             <!--PINTEREST BUTTON-->
@@ -365,10 +404,10 @@ p {
                     <a target="_new" href="http://pinterest.com/pin/create/button/?url={Permalink}&media={Permalink}"><img style="border: 0pt none;" src="https://cdn.shopify.com/s/files/1/0150/3940/t/1/assets/pinterest_icon.png" width="20" height="20" /></a>
                 </div>
             -->
-            <!--REDDIT BUTTON-->                        
+            <!--REDDIT BUTTON-->
                 <div class="post-footer-button">
                     <a href="//www.reddit.com/{Permalink}">
-                        <img src="http://kobol.caltech.edu/palomar/stylesnscripts/lightbox/img/reddit.png" alt="submit to reddit" border="0" width="21" height="21"/>
+                        <i class="fa fa-reddit-alien"></i>
                     </a>
                 </div>
             </div>
@@ -494,5 +533,6 @@ p {
     <p>Only permalink page</p>
 {/block:PermalinkPage}
 
+<script src="https://use.fontawesome.com/003437ff20.js"></script>
 </body>
 </html>
