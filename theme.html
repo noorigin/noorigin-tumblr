@@ -171,6 +171,9 @@ p {
 
 .post-footer {
     display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    padding-top: 0.1em;
 }
 
 .post-footer-button:not(:last-child) {
@@ -180,8 +183,13 @@ p {
 
 .post-footer-button i {
     font-size: 18px;
-    /*color: #ccc;*/
     color: orange;
+}
+
+.post-footer-button-follow a {
+    font-size: 0.7em;
+    border: 1px solid currentColor;
+    padding: .3em;
 }
 
 /*
@@ -408,6 +416,11 @@ p {
                 <div class="post-footer-button">
                     <a href="//www.reddit.com/{Permalink}">
                         <i class="fa fa-reddit-alien"></i>
+                    </a>
+                </div>
+                <div class="post-footer-button post-footer-button-follow">
+                    <a href="//www.tumblr.com/follow/noorigin">
+                        Follow
                     </a>
                 </div>
             </div>
