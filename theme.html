@@ -1,0 +1,488 @@
+<html>
+<head>
+<title>{Title}</title>
+<link rel="shortcut icon" href="{Favicon}">
+<link rel="alternate" type="application/rss+xml" href="{RSS}">
+<meta name="viewport" content="width=device-width,height=device-height">
+{block:Description}
+    <meta name="description" content="{MetaDescription}"/>
+{/block:Description}
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 13px;
+}
+
+body{
+    background-color:#222;
+    font-family:sans-serif;
+}
+
+a {
+    color:orange;
+    text-decoration:none;
+}
+
+p {
+    margin:1em 0 auto;
+    text-indent:2em;
+}
+
+/* Site masthead */
+
+.site-masthead {
+    text-align:center;
+    padding: 1rem 0 2rem;
+}
+
+.maintitle {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.maintitle a {
+    display: inline-block;
+    font-family: serif;
+    font-size: 2.1rem;
+    color: #444;
+    text-align: center;
+    letter-spacing: 0.4em;
+    padding: 0.3em 0.2em 0.3em 0.6em;
+    border: 1px solid #444;
+    text-transform:uppercase;
+}
+
+.mainlinks a {
+    font-size: 0.8rem;
+    height: 2rem;
+    line-height: 2rem;
+    color: #444;
+    text-align: center;
+    letter-spacing: 0.3em;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0 2em;
+}
+
+/* end site masthead */
+
+.posttitle, .posttitle a{
+    font-size:13px;
+    color:#FFF;
+    margin:0 auto 1em;
+}
+
+.posttext{
+    font-size:13px;
+    color:#999;
+    text-align:justify;
+    overflow:hidden;
+}
+
+.quotetext{
+    display:inline-block;
+    font-size:18px;
+    font-style:italic;
+    color:#777;
+    border:1px solid #777;
+    text-align:center;
+    padding:1em 2em;
+}
+
+.quotesource{
+    font-size:12px;
+    font-style:normal;
+    color:#555;
+    text-align:right;
+}
+
+.photoset-wrap img{
+    display:none; 
+}
+
+.photoset-wrap img:first-child{
+    display:block;
+    margin:10px 0 0;
+}
+
+.post a[href*="gallery"] {
+    display: block;
+    width: 100%;
+}
+
+.post img {
+    display: block;
+    max-width: 100%;
+    max-height: 50%;
+    margin: 0 auto;
+}
+
+.post {
+    background-color: #111;
+    padding: 1em;
+}
+
+.post-content {
+    position: relative;
+    width: 100%;
+    height: 97%;
+}
+
+.post-content p {
+    text-indent: 0;
+}
+
+.post-content .read-more { 
+  position: absolute; 
+  bottom: 0; 
+  left: 0;
+  width: 100%; 
+  text-align: center; 
+  margin: 0; padding: 10px 0; 
+  /* "transparent" only works here because == rgba(0,0,0,0) */
+  background-image: linear-gradient(to bottom, transparent, #111);
+}
+
+.postmainimageportrait,
+.postmainimagelandscape,
+.postimagedisplay {
+    margin-top: 0.6em;
+}
+
+.postmainimageportrait {
+    height: 75%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.postmainimagelandscape {
+    height: 35%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.post-footer {
+    height: 3%;
+}
+
+.post-footer-button {
+    float:left;
+    padding:0.2em;
+}
+
+.post-content .read_more_container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+
+.post-content .video-wrap {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+
+.post-content .video-wrap iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* in the grid (index page) */
+
+.post-grid .postmainimageportrait,
+.post-grid .postmainimagelandscape {
+    display: block;
+}
+
+.post-grid .postimagedisplay {
+    display: none;
+}
+
+/* in a permalink page */
+
+.post-single .postmainimageportrait,
+.post-single .postmainimagelandscape {
+    display: none;
+}
+
+.post-single .postimagedisplay {
+    display: block;
+}
+
+.post-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.post-grid .post {
+    margin: 0.5rem 0;
+    height: 850px;
+}
+
+
+.post-single {
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.post-single .post {
+    padding: 1em;
+}
+
+.post-single .post-content,
+.post-single .post-footer {
+    position: relative;
+    height: auto;
+    top: auto;
+    bottom: auto;
+}
+
+@media (max-width: 40rem) {
+    .post-grid .post {
+        width: 100%;
+        height: 750px;
+    }
+}
+
+@media (min-width: 40rem) and (max-width: 60rem) {
+    .post-grid .post {
+        width: 45%;
+        width: calc(50% - 1rem);
+    }
+}
+
+@media (min-width: 60rem) {
+    .post-grid .post {
+        width: 30%;
+        width: calc(33.33% - 1rem);
+    }
+}
+    
+@media (min-width: 1600px) {
+    .post-grid {
+        max-width: 1600px;
+        margin: auto auto;
+    }
+}
+</style>
+</head>
+<body>
+
+<header class="site-masthead">
+    <div class="maintitle">
+        <a href="http://noorigin.tumblr.com">{Title}</a>
+    </div>
+
+    <div class="mainlinks">
+        <a href="http://www.facebook.com">Facebook</a>
+        <a href="http://www.youtube.com">Youtube</a>
+        <a href="http://www.instagram.com">Instagram</a>
+    </div>
+</header>
+
+<!-- POSTS CREATED BELOW HERE -->
+
+{block:Description}
+    <p id="description">{Description}</p>
+{/block:Description}
+
+<!-- START POSTS WRAP -->
+<div id="posts"
+    {block:IndexPage}class="post-grid"{/block:IndexPage}
+    {block:PermalinkPage}class="post-single"{/block:PermalinkPage}
+>
+{block:Posts}
+
+    <!--TEXT POST-->
+    {block:Text}
+        <div class="post text">
+            <div class="post-content posttext">
+                {block:Title}
+                <div class="posttitle">
+                    <a href="{Permalink}">{Title}</a>
+                </div>
+                {/block:Title}
+                {Body}
+                <!-- CONTINUE and FADE at bottom of posts-->
+                {block:IndexPage}
+                <div class="read-more">
+                    <a href="{Permalink}" class="button">CONTINUE..</a>
+                </div>
+                {/block:IndexPage}
+            </div>
+            <div class="post-footer">
+                <!-- social etc -->
+                <div class="post-footer-button">{ReblogButton}</div>
+                <div class="post-footer-button">{LikeButton}</div>
+            <!--SOCIAL MEDIA LINK SECTION DISPLAYED ONLY ON PERMALINK PAGE-->
+            <!--SHARETHIS generated social media code, not sure if we should use them-->
+                <!--   
+                <span st_url='{Permalink}' st_title='{Title}' class='st_facebook' displayText='Facebook'></span><span st_url='{Permalink}' st_title='{Title}' class='st_twitter' displayText='Tweet'></span><span st_url='{Permalink}' st_title='{Title}' class='st_pinterest' displayText='Pinterest'></span><span st_url='{Permalink}' st_title='{Title}' class='st_reddit' displayText='Reddit'></span>
+                -->
+            <!--HTML SOCIAL MEDIA BUTTONS BELOW-->
+            <!--TWITTER BUTTON-->
+                <div class="post-footer-button">
+                    <a target="_new" href="https://twitter.com/intent/tweet?text=No Origin - {URLEncodedTweetSummary}">
+                        <img style="border: 0pt none;" src="http://www.tnlvl.com/images/icons/twitter-gray.png" width="20" height="20" />
+                    </a>
+                </div>
+            <!--FACEBOOK BUTTON-->
+                <div class="post-footer-button">
+                    <a target="_new" href="https://www.facebook.com/sharer.php?u={Permalink}{block:Title}&t={Title}{/block:Title}">
+                        <img style="border: 0pt none;" src="http://usa.flos.com/assets/img/footer/facebook.png" width="19" height="19" />
+                    </a>
+                </div>
+            <!--PINTEREST BUTTON-->
+            <!-- not working because the pinterest button needs a media URL to supply an image and it can't pull randomly from a modded Text Post
+
+                <div class="post-footer-button">
+                    <a target="_new" href="http://pinterest.com/pin/create/button/?url={Permalink}&media={Permalink}"><img style="border: 0pt none;" src="https://cdn.shopify.com/s/files/1/0150/3940/t/1/assets/pinterest_icon.png" width="20" height="20" /></a>
+                </div>
+            -->
+            <!--REDDIT BUTTON-->                        
+                <div class="post-footer-button">
+                    <a href="//www.reddit.com/{Permalink}">
+                        <img src="http://kobol.caltech.edu/palomar/stylesnscripts/lightbox/img/reddit.png" alt="submit to reddit" border="0" width="21" height="21"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {/block:Text}
+
+    <!--TagPage blocks selected posts from appearing on the front/index page but enables them to be posted behind the scenes and resources utilised -->
+    {block:TagPage}
+
+    <!--VIDEO POST-->
+    {block:Video}
+        <div class="post video">
+            {Video-500}{block:Caption}
+                <div class="posttext">
+                {Caption}
+                </div>
+            {/block:Caption}
+        </div>
+    {/block:Video}
+    
+    <!--PHOTOSET POST-->
+    {block:Photoset}
+        <div class="post photoset">
+            {block:Caption}
+                <a href="http://noorigin.tumblr.com/gallery" class="posttitle">{Caption}</a>
+            {/block:Caption}
+            <div>
+                {Photoset-500}
+            </div>
+        </div>
+    {/block:Photoset}
+    
+    <!--PHOTO POST-->
+    {block:Photo}
+        <div class="post photo">
+            {block:Caption}
+                <a href="http://noorigin.tumblr.com/gallery" class="posttitle">{Caption}</a>
+            {/block:Caption}
+            <a href="http://noorigin.tumblr.com/gallery">
+                <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+            </a>
+        </div>
+    {/block:Photo}
+    
+    <!--QUOTE POST-->
+    {block:Quote}
+        <div class="post quotetext">
+            "{Quote}"
+            {block:Source}
+                <div class="quotesource">{Source}</div>
+            {/block:Source}
+        </div>
+    {/block:Quote}
+    
+    <!--AUDIO POST-->
+    {block:Audio}
+        <div class="post audio">
+            <div class="posttitle">
+                {AudioEmbed}{block:Caption}
+                    <div class="posttext">{Caption}</div>
+                {/block:Caption}
+            </div>
+        </div>
+    {/block:Audio}
+    
+    <!--PANORAMA POST-->
+    {block:Panorama}
+        <div class="post panorama">
+            {LinkOpenTag}
+                <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+            {LinkCloseTag}{block:Caption}
+                <div class="caption">{Caption}</div>
+            {/block:Caption}
+        </div>
+    {/block:Panorama}
+    
+    <!--LINK POST-->
+    {block:Link}
+        <div class="post link">
+            <a href="{URL}" class="link" {Target}>{Name}</a>
+            {block:Description}
+                <div class="description">{Description}</div>
+            {/block:Description}
+        </div>
+    {/block:Link}
+    
+    <!--CHAT POST-->
+    {block:Chat}
+        <div class="post chat">
+            {block:Title}
+                <h3><a href="{Permalink}">{Title}</a></h3>
+            {/block:Title}
+
+            <ul class="chat">
+                {block:Lines}
+                    <div class="{Alt} user_{UserNumber}">
+                        {block:Label}
+                            <span class="label">{Label}</span>
+                        {/block:Label}{Line}
+                    </div>
+                {/block:Lines}
+            </ul>
+        </div>
+    {/block:Chat}
+
+    {/block:TagPage}
+
+{/block:Posts}
+</div>
+<!-- END POSTS WRAP -->
+
+{block:IndexPage}
+    <p id="footer">
+        {block:PreviousPage}
+            <a href="{PreviousPage}">&#171; Previous</a>
+        {/block:PreviousPage}{block:NextPage}
+            <a href="{NextPage}">Next &#187;</a>
+        {/block:NextPage}
+    </p>
+{/block:IndexPage}
+
+{block:PermalinkPage}
+    <p>Only permalink page</p>
+{/block:PermalinkPage}
+
+</body>
+</html>
