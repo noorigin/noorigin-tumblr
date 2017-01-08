@@ -101,7 +101,7 @@ p {
 }
 
 .photoset-wrap img{
-    display:none; 
+    display:none;
 }
 
 .photoset-wrap img:first-child{
@@ -136,13 +136,13 @@ p {
     text-indent: 0;
 }
 
-.post-content .read-more { 
-  position: absolute; 
-  bottom: 0; 
+.post-content .read-more {
+  position: absolute;
+  bottom: 0;
   left: 0;
-  width: 100%; 
-  text-align: center; 
-  margin: 0; padding: 10px 0; 
+  width: 100%;
+  text-align: center;
+  margin: 0; padding: 10px 0;
   /* "transparent" only works here because == rgba(0,0,0,0) */
   background-image: linear-gradient(to bottom, transparent, #111);
 }
@@ -338,7 +338,7 @@ p {
         width: calc(33.33% - 1rem);
     }
 }
-    
+
 @media (min-width: 1600px) {
     .post-grid {
         max-width: 1600px;
@@ -431,7 +431,7 @@ p {
             -->
             <!--REDDIT BUTTON-->
                 <div class="post-footer-button">
-                    <a href="//www.reddit.com/{Permalink}">
+                    <a href="//www.reddit.com/{Permalink}" target="_blank">
                         <i class="fa fa-reddit-alien"></i>
                     </a>
                 </div>
@@ -457,7 +457,7 @@ p {
             {/block:Caption}
         </div>
     {/block:Video}
-    
+
     <!--PHOTOSET POST-->
     {block:Photoset}
         <div class="photoset-container">
@@ -469,7 +469,7 @@ p {
             </div>
         </div>
     {/block:Photoset}
-    
+
     <!--PHOTO POST-->
     {block:Photo}
         <div class="post photo">
@@ -481,7 +481,7 @@ p {
             </a>
         </div>
     {/block:Photo}
-    
+
     <!--QUOTE POST-->
     {block:Quote}
         <div class="post quotetext">
@@ -491,7 +491,7 @@ p {
             {/block:Source}
         </div>
     {/block:Quote}
-    
+
     <!--AUDIO POST-->
     {block:Audio}
         <div class="post audio">
@@ -502,7 +502,7 @@ p {
             </div>
         </div>
     {/block:Audio}
-    
+
     <!--PANORAMA POST-->
     {block:Panorama}
         <div class="post panorama">
@@ -513,7 +513,7 @@ p {
             {/block:Caption}
         </div>
     {/block:Panorama}
-    
+
     <!--LINK POST-->
     {block:Link}
         <div class="post link">
@@ -523,7 +523,7 @@ p {
             {/block:Description}
         </div>
     {/block:Link}
-    
+
     <!--CHAT POST-->
     {block:Chat}
         <div class="post chat">
